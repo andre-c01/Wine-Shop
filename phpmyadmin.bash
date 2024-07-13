@@ -22,7 +22,7 @@ mariadb -u root -pSystem32 -e "INSTALL COMPONENT 'file://component_validate_pass
 
 ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
 
-cp phpmyadmin.conf /etc/nginx/sites-available/
+cp phpmyadmin.conf /etc/nginx/sites-available/phpmyadmin
 
 ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/
 
