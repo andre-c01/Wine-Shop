@@ -20,11 +20,9 @@
 
 <div class="main">
     <?php 
-    echo var_dump($_GET);
-    if (isset($_GET['category']))
+    $category = urldecode(explode("=", parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY))[1]);
+    if (!isset($category))
     {
-        $category = $_GET['category'];
-    } else {
         $category = null;
     }
     foreach (Products::fetch_all($category) as $product) : ?>
