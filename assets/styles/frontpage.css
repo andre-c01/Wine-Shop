@@ -1,0 +1,93 @@
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 25px;
+
+    color: var(--tx);
+
+    height: calc(100vh - 56px);
+    min-height: calc(100vh - 56px);
+}
+
+.main .col {
+    flex: 50%;
+}
+
+.main span{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: Lato;
+    color: var(--ac);
+}
+
+.main span:nth-child(1) {
+    font-size: 3rem;
+}
+
+.sign {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 400px;
+
+    background-color: var(--fg);
+    padding: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%)
+}
+
+.sign .row:nth-child(1) {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.sign .row:nth-child(1) span {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.sign .row:nth-child(2) {
+    height: 100px;
+    justify-self: center;
+}
+
+.sign .row:nth-child(3) {
+    width: 100%;
+}
+
+.sign form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+}
+
+.sign form input {
+    width: 100%;
+    background-color: var(--fg);
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid white;
+}
+
+.sign form input:focus {
+    outline: none;
+}
+
+.sign form input[type="button"]:hover {
+    color: var(--ac);
+    cursor: pointer;
+}
