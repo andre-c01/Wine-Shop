@@ -2,21 +2,30 @@
 
 apt update
 
+mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password"
+
+mariadb -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('System32')"
+
+mariadb -u root -pSystem32 -e "DROP USER ''@'localhost'"
+
+mariadb -u root -pSystem32 -e "DROP USER ''@'$(hostname)'"
+
+mariadb -u root -pSystem32 -e "DROP DATABASE test"
+
+mariadb -u root -pSystem32 -e "FLUSH PRIVILEGES"
+
+mariadb -u root -pSystem32 -e "UNINSTALL COMPONENT 'file://component_validate_password'"
+
 apt install phpmyadmin -y
 
-mariadb -e "UPDATE mariadb.user SET Password = PASSWORD('CHANGEME') WHERE User = 'root'"
+mariadb -u root -pSystem32 -e "INSTALL COMPONENT 'file://component_validate_password'"
 
-mariadb -e "DROP USER ''@'localhost'"
+ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
 
-mariadb -e "DROP USER ''@'$(hostname)'"
+cp phpmyadmin.conf /etc/nginx/sites-available/
 
-mariadb -e "DROP DATABASE test"
+ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/
 
-mariadb -e "FLUSH PRIVILEGES"
-
-
-
-
-# copy nginx conf
+systemctl reload nginx
 
 
